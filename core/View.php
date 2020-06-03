@@ -12,7 +12,7 @@
             $viewString = implode(DS, $viewAry);
             if (file_exists(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php')) {
                 include(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php');
-                //include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
+                include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
             } else {
                 die('The view \"' . $viewName . '"\ does note exist.');
             }
@@ -28,7 +28,7 @@
         }
 
         public function start($type) {
-            $this->_outputBuffer == $type;
+            $this->_outputBuffer = $type;
             ob_start();
         }
 
