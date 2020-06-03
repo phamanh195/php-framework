@@ -2,7 +2,7 @@
 
     class DB {
         private static $_instance = null;
-        private $_pdo, $_query, $_error = false, $_result = [], $_count = 0, $_lastInsertID = null;
+        private $_pdo, $_query, $_error = false, $_result, $_count = 0, $_lastInsertID = null;
 
         private function __construct() {
             try {
@@ -28,8 +28,6 @@
                         $this->_query->bindValue($x, $param);
                         $x++;
                     }
-                    //dnd($params);
-                    //dnd($this->_query);
                 }
 
                 if ($this->_query->execute()) {
@@ -124,6 +122,7 @@
             }
             $sql = "SELECT * FROM {$table}{$conditionString}{$order}{$limit}";
             if ($this->query($sql, $bind)) {
+                //dnd($this->_result);
                 if (!count($this->_result)) return false;
                 return true;
             }
