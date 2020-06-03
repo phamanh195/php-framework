@@ -8,12 +8,12 @@
         public function indexAction() {
             echo "DB<br/>";
             $db = DB::getInstance();
-            $fields = [
-                'fname' => 'Tony',
-                'lname' => 'Parham',
-                'email' => 'toni@sharklasers.com',
-            ];
-            $contact = $db->insert('contacts', $fields);
+            $contact = $db->find('contacts', [
+                'conditions' => ['lname = ?'],
+                'bind' => ['Anh'],
+                'order' => 'lname',
+                'limit' => 1,
+            ]);
             dnd($contact);
             $this->view->render('home/index');
         }
