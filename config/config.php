@@ -4,6 +4,7 @@
 
     define('DEFAULT_CONTROLLER', 'Home'); // default controller if there isn't one defined in the url.
     define('DEFAULT_LAYOUT', 'default'); // if no layout is set in the controller use this layout.
+    define('DEFAULT_POSTS_PER_PAGE', 25);
 
     define('PROOT', '/');
 

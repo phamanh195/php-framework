@@ -1,7 +1,7 @@
 <?php
 
     class Model {
-        public $_db, $_table, $_modelName, $_softDelete = false, $_columnNames = [];
+        protected $_db, $_table, $_modelName, $_softDelete = false, $_columnNames = [];
         public $id;
 
         public function __construct($table) {
