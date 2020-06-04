@@ -20,7 +20,7 @@
         }
 
         public function query($sql, $params = []) {
-            $this->error = false;
+            $this->_error = false;
             if ($this->_query = $this->_pdo->prepare($sql)) {
                 $x = 1;
                 if (count($params)) {
@@ -31,11 +31,11 @@
                 }
 
                 if ($this->_query->execute()) {
-                    $this->_results = $this->_query->fetchALL(PDO::FETCH_OBJ);
+                    $this->_result = $this->_query->fetchALL(PDO::FETCH_OBJ);
                     $this->_count = $this->_query->rowCount();
                     $this->_lastInsertID = $this->_pdo->LastInsertId();
                 } else {
-                    $this->error = true;
+                    $this->_error = true;
                 }
             }
             return $this;
@@ -84,6 +84,30 @@
             return false;
         }
 
+        public function results() {
+            return $this->_result;
+        }
+
+        public function first() {
+            return (!empty($this->_result))? $this->_result[0] :[];
+        }
+
+        public function count() {
+            return $this->_count;
+        }
+
+        public function lastID() {
+            return $this->_lastInsertID;
+        }
+
+        public function get_columns($table) {
+            return $this->query("SHOW COLUMNS FROM {$table}")->results();
+        }
+
+        public function error() {
+            return $this->_error;
+        }
+
         protected function _read($table, $params=[]) {
             $conditionString = '';
             $bind = [];
@@ -122,7 +146,6 @@
             }
             $sql = "SELECT * FROM {$table}{$conditionString}{$order}{$limit}";
             if ($this->query($sql, $bind)) {
-                //dnd($this->_result);
                 if (!count($this->_result)) return false;
                 return true;
             }
@@ -141,9 +164,5 @@
                 return $this->first();
             }
             return false;
-        }
-
-        public function error() {
-            return $this->_error;
         }
     }

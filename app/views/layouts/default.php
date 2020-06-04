@@ -16,40 +16,36 @@
             <?= $this->siteTitle(); ?>
         </title>
     </head>
-    <body>
+    <body class="bg-light">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+        <div class="container">
+            <a class="navbar-brand" href="<?= PROOT ?>">MyBlog</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<?= PROOT ?>">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
                 </ul>
+                <?php if (currentUser() == null) {
+                    echo '<a href="'.PROOT.'register/login" class="btn btn-success px-3" role="button" aria-pressed="true">Sign in</a>';
+                } else {
+                    echo '<a href="'.PROOT.'register/logout" class="btn btn-success px-3" role="button" aria-pressed="true">';
+                    echo 'Hello ' . currentUser()->lname . '! / Sign out';
+                    echo '</a>';
+                } ?>
             </div>
+        </div>
         </nav>
         <!-- Add Body PHP -->
+        <div class="container">
         <?= $this->content('body'); ?>
+        </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
