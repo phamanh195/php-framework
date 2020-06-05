@@ -121,11 +121,11 @@
                     foreach($params['conditions'] as $condition) {
                         $conditionString .= ' ' . $condition . ' AND';
                     }
+                } else {
+                    $conditionString = $params['conditions'];
                 }
                 $conditionString = trim($conditionString);
                 $conditionString = rtrim($conditionString, 'AND');
-            } else {
-                $conditionString = $params['conditions'];
             }
             if ($conditionString != '') {
                 $conditionString = ' WHERE ' . $conditionString;

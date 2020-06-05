@@ -37,9 +37,12 @@
 
         public function findFirst($params = []) {
             $resultQuery = $this->_db->findFirst($this->_table, $params);
-            $result = new $this->_modelName($this->_table);
-            $result->populateObjData($resultQuery);
-            return $result;
+            if ($resultQuery) {
+                $result = new $this->_modelName($this->_table);
+                $result->populateObjData($resultQuery);
+                return $result;
+            }
+            return false;
         }
 
         public function findById($id) {

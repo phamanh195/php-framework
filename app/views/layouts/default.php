@@ -28,9 +28,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="<?= PROOT ?>">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
                 </ul>
                 <?php if (currentUser() == null) {
                     echo '<a href="'.PROOT.'register/login" class="btn btn-success px-3" role="button" aria-pressed="true">Sign in</a>';

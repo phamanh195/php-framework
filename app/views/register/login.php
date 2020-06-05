@@ -12,7 +12,7 @@
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="text" class="form-control" id="password" name="password" placeholder="Enter password here">
+    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password here">
   </div>
   <div class="form-check">
       <input class="form-check-input" type="checkbox" id="remember_me">
