@@ -41,7 +41,9 @@
         </nav>
         <!-- Add Body PHP -->
         <div class="container">
+
         <?= $this->content('body'); ?>
+        
         </div>
 
         <!-- Optional JavaScript -->

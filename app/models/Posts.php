@@ -15,7 +15,7 @@
             }
         }
 
-        public function totalPagesNumber() {
+        public function totalPostsNumber() {
             $posts_number = $this->_db->query('SELECT COUNT(*) FROM ' . $this->_table);
             if (!empty($posts_number)) {
                 $posts_number = 0;
