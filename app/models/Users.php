@@ -49,7 +49,12 @@ class Users extends Model {
     }
 
     public static function loginUserFromCookie() {
-
+        $userSession = UserSessions::getFromCookie();
+        if ($userSession->user_id != '') {
+            $user = new self((int)$userSession->user_id);
+        }
+        $user->login();
+        return $user;
     }
 
     public function logout() {
@@ -61,5 +66,20 @@ class Users extends Model {
         }
         self::$currentLoggedInUser = null;
         return true;
+    }
+
+    public function registerNewUser($params) {
+        $this->assign($params);
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->admin = 0;
+        $this->save();
+    }
+
+    public function isAdmin() {
+        if ($this->admin) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

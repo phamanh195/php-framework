@@ -17,4 +17,4 @@
 
     define('CURRENT_USER_SESSION_NAME', 'laljladaslkasdjapqpweqwpe');
     define('REMEMBER_ME_COOKIE_NAME', 'HJLJL0987kjhbm123adlasd123');
-    define('REMEMBER_ME_COOKIE_EXPIRY', 604800);
+    define('REMEMBER_ME_COOKIE_EXPIRY', 2592000);

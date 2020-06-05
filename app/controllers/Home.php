@@ -6,6 +6,13 @@
         }
 
         public function indexAction() {
+            $posts = new Posts();
+
+            $this->view->posts = $posts->paginate();
             $this->view->render('home/index');
+        }
+
+        public function postAction($params) {
+            dnd($params);
         }
     }

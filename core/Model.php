@@ -49,7 +49,7 @@
         public function save() {
             $fields = [];
             foreach($this->_columnNames as $column) {
-                $fields[column] = $this->column;
+                $fields[$column] = $this->$column;
             }
             //determine whether to update or insert
             if(property_exists($this, 'id') && $this->id != '') {

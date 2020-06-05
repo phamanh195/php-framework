@@ -36,6 +36,7 @@
                     $this->_lastInsertID = $this->_pdo->LastInsertId();
                 } else {
                     $this->_error = true;
+                    //dnd($this->_query->errorInfo());
                 }
             }
             return $this;

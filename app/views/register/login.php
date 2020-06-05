@@ -22,5 +22,5 @@
     </div>
   <button type="submit" class="btn btn-primary my-2">Sign in</button>
 </form>
-<p>New user? <a href="<?=PROOT?>">Click here to register</a>.</p>
+<p>New user? <a href="<?=PROOT?>register/register">Click here to register</a>.</p>
 <?php $this->end(); ?>

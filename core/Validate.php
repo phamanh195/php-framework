@@ -20,13 +20,13 @@
                         switch ($rule) {
                             case 'min':
                                 if (strlen($value) < $rule_value) {
-                                    $this->addError("{$display} must be a minimum of {$rule_value} characters.", $item);
+                                    $this->addError(["{$display} must be a minimum of {$rule_value} characters.", $item]);
                                 }
                             break;
 
                             case 'max':
                                 if (strlen($value) > $rule_value) {
-                                    $this->addError("{$display} must be a maximum of {$rule_value} characters.", $item);
+                                    $this->addError(["{$display} must be a maximum of {$rule_value} characters.", $item]);
                                 }
                             break;
 
@@ -35,6 +35,7 @@
                                     $matchDisplay = $item[$rule_value]['display'];
                                     $this->addError(["{$matchDisplay} and {$display} must match.", item]);
                                 }
+                            break;
 
                             case 'unique':
                                 $check = $this->_db->query("SELECT {$item} FROM {$rule_value} WHERE {$item} = ?", [$value]);
@@ -58,6 +59,7 @@
                                     $this->addError(["{$display} has to be a valid email address.", $item]);
                                 }
                             break;
+
                         }
                     }
                 }
